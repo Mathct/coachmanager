@@ -1,13 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Rencontre{% endblock %}
+{% block title %}Modifier match | CoachManager{% endblock %}
 
 {% block body %}
-    <h1>Edit Rencontre</h1>
-
-    {{ include('rencontre/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_rencontre_index') }}">back to list</a>
-
-    {{ include('rencontre/_delete_form.html.twig') }}
+    <div class="mb-4">
+        <h1 class="cm-page-title">Modifier la rencontre</h1>
+        <p class="cm-page-subtitle">{{ rencontre.team.nom }} vs {{ rencontre.opponent }}</p>
+    </div>
+    <div class="cm-card p-4">
+        {{ include('rencontre/_form.html.twig', {'button_label': 'Mettre a jour'}) }}
+        <div class="mt-3 pt-3 border-top border-secondary-subtle">
+            {{ include('rencontre/_delete_form.html.twig') }}
+        </div>
+    </div>
 {% endblock %}

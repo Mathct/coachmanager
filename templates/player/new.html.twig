@@ -1,11 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Player{% endblock %}
+{% block title %}Nouveau joueur | CoachManager{% endblock %}
 
 {% block body %}
-    <h1>Create new Player</h1>
-
-    {{ include('player/_form.html.twig') }}
-
-    <a href="{{ path('app_player_index') }}">back to list</a>
+    <div class="mb-4">
+        <h1 class="cm-page-title">Ajouter un joueur</h1>
+        <p class="cm-page-subtitle">Inscription d un nouveau joueur a l effectif.</p>
+    </div>
+    <div class="cm-card p-4">
+        {{ include('player/_form.html.twig') }}
+    </div>
 {% endblock %}

@@ -1,4 +1,26 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <div class="row g-3">
+        <div class="col-md-6">
+            {{ form_row(form.team) }}
+        </div>
+        <div class="col-md-6">
+            {{ form_row(form.opponent) }}
+        </div>
+        <div class="col-md-6">
+            {{ form_row(form.date) }}
+        </div>
+        <div class="col-md-3">
+            {{ form_row(form.score_team) }}
+        </div>
+        <div class="col-md-3">
+            {{ form_row(form.score_opponent) }}
+        </div>
+        <div class="col-12">
+            {{ form_row(form.analyse) }}
+        </div>
+    </div>
+    <div class="d-flex gap-2 mt-3">
+        <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+        <a href="{{ path('app_rencontre_index') }}" class="btn btn-outline-light">Annuler</a>
+    </div>
 {{ form_end(form) }}

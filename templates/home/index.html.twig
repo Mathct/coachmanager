@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard | CoachManager{% endblock %}
+
+{% block body %}
+    <div class="d-flex flex-wrap justify-content-between align-items-end mb-4 gap-3">
+        <div>
+            <h1 class="cm-page-title">Pilotage du club</h1>
+            <p class="cm-page-subtitle">Vue d ensemble des equipes, joueurs et rencontres.</p>
+        </div>
+        <div class="d-flex gap-2">
+            <a href="{{ path('app_team_new') }}" class="btn btn-outline-light">+ Equipe</a>
+            <a href="{{ path('app_player_new') }}" class="btn btn-outline-light">+ Joueur</a>
+            <a href="{{ path('app_rencontre_new') }}" class="btn btn-success">+ Match</a>
+        </div>
+    </div>
+
+    <section class="row g-3 mb-4">
+        <div class="col-md-4">
+            <div class="cm-stat h-100">
+                <p class="cm-soft mb-1">Equipes</p>
+                <p class="cm-stat-value mb-1">{{ team_count }}</p>
+                <small class="cm-soft">Actives dans le club</small>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="cm-stat h-100">
+                <p class="cm-soft mb-1">Joueurs</p>
+                <p class="cm-stat-value mb-1">{{ player_count }}</p>
+                <small class="cm-soft">Inscrits en effectif</small>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="cm-stat h-100">
+                <p class="cm-soft mb-1">Matchs planifies</p>
+                <p class="cm-stat-value mb-1">{{ rencontre_count }}</p>
+                <small class="cm-soft">Historique et programmation</small>
+            </div>
+        </div>
+    </section>
+
+    <section class="cm-card p-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="h4 mb-0">Dernieres rencontres</h2>
+            <a class="btn btn-sm btn-outline-light" href="{{ path('app_rencontre_index') }}">Voir tout</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-dark table-hover align-middle cm-table mb-0">
+                <thead>
+                    <tr>
+                        <th>Equipe</th>
+                        <th>Adversaire</th>
+                        <th>Date</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for rencontre in latest_rencontres %}
+                    <tr>
+                        <td>{{ rencontre.team.nom }}</td>
+                        <td>{{ rencontre.opponent }}</td>
+                        <td>{{ rencontre.date ? rencontre.date|date('d/m/Y H:i') : '-' }}</td>
+                        <td>
+                            {% if rencontre.scoreTeam is not null and rencontre.scoreOpponent is not null %}
+                                <span class="badge text-bg-primary">{{ rencontre.scoreTeam }} - {{ rencontre.scoreOpponent }}</span>
+                            {% else %}
+                                <span class="badge text-bg-secondary">A jouer</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4" class="text-center text-muted py-4">Aucune rencontre pour le moment.</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+{% endblock %}

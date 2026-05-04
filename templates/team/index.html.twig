@@ -1,37 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Team index{% endblock %}
+{% block title %}Equipes | CoachManager{% endblock %}
 
 {% block body %}
-    <h1>Team index</h1>
+    <div class="d-flex justify-content-between align-items-end mb-4">
+        <div>
+            <h1 class="cm-page-title">Equipes</h1>
+            <p class="cm-page-subtitle">Structure et categories du club.</p>
+        </div>
+        <a href="{{ path('app_team_new') }}" class="btn btn-success">+ Nouvelle equipe</a>
+    </div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Type</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for team in teams %}
-            <tr>
-                <td>{{ team.id }}</td>
-                <td>{{ team.nom }}</td>
-                <td>{{ team.type }}</td>
-                <td>
-                    <a href="{{ path('app_team_show', {'id': team.id}) }}">show</a>
-                    <a href="{{ path('app_team_edit', {'id': team.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_team_new') }}">Create new</a>
+    <div class="cm-card p-3 p-md-4">
+        <div class="table-responsive">
+            <table class="table table-dark table-hover align-middle cm-table mb-0">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nom</th>
+                        <th>Type</th>
+                        <th class="text-end">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for team in teams %}
+                    <tr>
+                        <td>{{ team.id }}</td>
+                        <td class="fw-semibold">{{ team.nom }}</td>
+                        <td><span class="badge text-bg-info">{{ team.type }}</span></td>
+                        <td class="text-end">
+                            <a class="btn btn-sm btn-outline-light" href="{{ path('app_team_show', {'id': team.id}) }}">Voir</a>
+                            <a class="btn btn-sm btn-primary" href="{{ path('app_team_edit', {'id': team.id}) }}">Modifier</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4" class="text-center text-muted py-4">Aucune equipe enregistree.</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}

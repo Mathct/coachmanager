@@ -1,11 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Team{% endblock %}
+{% block title %}Nouvelle equipe | CoachManager{% endblock %}
 
 {% block body %}
-    <h1>Create new Team</h1>
-
-    {{ include('team/_form.html.twig') }}
-
-    <a href="{{ path('app_team_index') }}">back to list</a>
+    <div class="mb-4">
+        <h1 class="cm-page-title">Creer une equipe</h1>
+        <p class="cm-page-subtitle">Ajoute une nouvelle categorie d equipe a ton club.</p>
+    </div>
+    <div class="cm-card p-4">
+        {{ include('team/_form.html.twig') }}
+    </div>
 {% endblock %}

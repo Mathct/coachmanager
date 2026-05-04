@@ -1,30 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Team{% endblock %}
+{% block title %}Equipe | CoachManager{% endblock %}
 
 {% block body %}
-    <h1>Team</h1>
+    <div class="d-flex justify-content-between align-items-end mb-4">
+        <div>
+            <h1 class="cm-page-title">{{ team.nom }}</h1>
+            <p class="cm-page-subtitle">Fiche equipe</p>
+        </div>
+        <div class="d-flex gap-2">
+            <a href="{{ path('app_team_index') }}" class="btn btn-outline-light">Retour</a>
+            <a href="{{ path('app_team_edit', {'id': team.id}) }}" class="btn btn-primary">Modifier</a>
+        </div>
+    </div>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ team.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ team.nom }}</td>
-            </tr>
-            <tr>
-                <th>Type</th>
-                <td>{{ team.type }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_team_index') }}">back to list</a>
-
-    <a href="{{ path('app_team_edit', {'id': team.id}) }}">edit</a>
-
-    {{ include('team/_delete_form.html.twig') }}
+    <div class="cm-card p-4">
+        <div class="row g-3">
+            <div class="col-md-4">
+                <div class="cm-stat">
+                    <p class="cm-soft mb-1">Identifiant</p>
+                    <p class="h3 mb-0">{{ team.id }}</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="cm-stat">
+                    <p class="cm-soft mb-1">Nom</p>
+                    <p class="h4 mb-0">{{ team.nom }}</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="cm-stat">
+                    <p class="cm-soft mb-1">Type</p>
+                    <p class="h4 mb-0">{{ team.type }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="mt-4 pt-3 border-top border-secondary-subtle">
+            {{ include('team/_delete_form.html.twig') }}
+        </div>
+    </div>
 {% endblock %}

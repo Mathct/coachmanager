@@ -1,11 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Rencontre{% endblock %}
+{% block title %}Nouveau match | CoachManager{% endblock %}
 
 {% block body %}
-    <h1>Create new Rencontre</h1>
-
-    {{ include('rencontre/_form.html.twig') }}
-
-    <a href="{{ path('app_rencontre_index') }}">back to list</a>
+    <div class="mb-4">
+        <h1 class="cm-page-title">Planifier un match</h1>
+        <p class="cm-page-subtitle">Renseigne l adversaire, la date et l equipe concernee.</p>
+    </div>
+    <div class="cm-card p-4">
+        {{ include('rencontre/_form.html.twig') }}
+    </div>
 {% endblock %}

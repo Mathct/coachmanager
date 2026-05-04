@@ -1,41 +1,49 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Player index{% endblock %}
+{% block title %}Joueurs | CoachManager{% endblock %}
 
 {% block body %}
-    <h1>Player index</h1>
+    <div class="d-flex justify-content-between align-items-end mb-4">
+        <div>
+            <h1 class="cm-page-title">Joueurs</h1>
+            <p class="cm-page-subtitle">Gestion de l effectif du club.</p>
+        </div>
+        <a href="{{ path('app_player_new') }}" class="btn btn-success">+ Nouveau joueur</a>
+    </div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Date_naissance</th>
-                <th>Sexe</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for player in players %}
-            <tr>
-                <td>{{ player.id }}</td>
-                <td>{{ player.nom }}</td>
-                <td>{{ player.prenom }}</td>
-                <td>{{ player.dateNaissance ? player.dateNaissance|date('Y-m-d') : '' }}</td>
-                <td>{{ player.sexe }}</td>
-                <td>
-                    <a href="{{ path('app_player_show', {'id': player.id}) }}">show</a>
-                    <a href="{{ path('app_player_edit', {'id': player.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_player_new') }}">Create new</a>
+    <div class="cm-card p-3 p-md-4">
+        <div class="table-responsive">
+            <table class="table table-dark table-hover align-middle cm-table mb-0">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Joueur</th>
+                        <th>Date de naissance</th>
+                        <th>Sexe</th>
+                        <th>Equipe</th>
+                        <th class="text-end">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for player in players %}
+                    <tr>
+                        <td>{{ player.id }}</td>
+                        <td class="fw-semibold">{{ player.nom }} {{ player.prenom }}</td>
+                        <td>{{ player.dateNaissance ? player.dateNaissance|date('d/m/Y') : '-' }}</td>
+                        <td><span class="badge text-bg-secondary">{{ player.sexe }}</span></td>
+                        <td>{{ player.team ? player.team.nom : 'Sans equipe' }}</td>
+                        <td class="text-end">
+                            <a class="btn btn-sm btn-outline-light" href="{{ path('app_player_show', {'id': player.id}) }}">Voir</a>
+                            <a class="btn btn-sm btn-primary" href="{{ path('app_player_edit', {'id': player.id}) }}">Modifier</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6" class="text-center text-muted py-4">Aucun joueur enregistre.</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}

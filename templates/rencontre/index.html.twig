@@ -1,43 +1,55 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Rencontre index{% endblock %}
+{% block title %}Matchs | CoachManager{% endblock %}
 
 {% block body %}
-    <h1>Rencontre index</h1>
+    <div class="d-flex justify-content-between align-items-end mb-4">
+        <div>
+            <h1 class="cm-page-title">Rencontres</h1>
+            <p class="cm-page-subtitle">Calendrier, scores et analyses des matchs.</p>
+        </div>
+        <a href="{{ path('app_rencontre_new') }}" class="btn btn-success">+ Planifier un match</a>
+    </div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Opponent</th>
-                <th>Date</th>
-                <th>Score_team</th>
-                <th>Score_opponent</th>
-                <th>Analyse</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for rencontre in rencontres %}
-            <tr>
-                <td>{{ rencontre.id }}</td>
-                <td>{{ rencontre.opponent }}</td>
-                <td>{{ rencontre.date ? rencontre.date|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ rencontre.scoreTeam }}</td>
-                <td>{{ rencontre.scoreOpponent }}</td>
-                <td>{{ rencontre.analyse }}</td>
-                <td>
-                    <a href="{{ path('app_rencontre_show', {'id': rencontre.id}) }}">show</a>
-                    <a href="{{ path('app_rencontre_edit', {'id': rencontre.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_rencontre_new') }}">Create new</a>
+    <div class="cm-card p-3 p-md-4">
+        <div class="table-responsive">
+            <table class="table table-dark table-hover align-middle cm-table mb-0">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Equipe</th>
+                        <th>Adversaire</th>
+                        <th>Date</th>
+                        <th>Score</th>
+                        <th class="text-end">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for rencontre in rencontres %}
+                    <tr>
+                        <td>{{ rencontre.id }}</td>
+                        <td>{{ rencontre.team.nom }}</td>
+                        <td class="fw-semibold">{{ rencontre.opponent }}</td>
+                        <td>{{ rencontre.date ? rencontre.date|date('d/m/Y H:i') : '-' }}</td>
+                        <td>
+                            {% if rencontre.scoreTeam is not null and rencontre.scoreOpponent is not null %}
+                                <span class="badge text-bg-primary">{{ rencontre.scoreTeam }} - {{ rencontre.scoreOpponent }}</span>
+                            {% else %}
+                                <span class="badge text-bg-secondary">A jouer</span>
+                            {% endif %}
+                        </td>
+                        <td class="text-end">
+                            <a class="btn btn-sm btn-outline-light" href="{{ path('app_rencontre_show', {'id': rencontre.id}) }}">Voir</a>
+                            <a class="btn btn-sm btn-primary" href="{{ path('app_rencontre_edit', {'id': rencontre.id}) }}">Modifier</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6" class="text-center text-muted py-4">Aucune rencontre enregistree.</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}

@@ -1,42 +1,51 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Rencontre{% endblock %}
+{% block title %}Match | CoachManager{% endblock %}
 
 {% block body %}
-    <h1>Rencontre</h1>
+    <div class="d-flex justify-content-between align-items-end mb-4">
+        <div>
+            <h1 class="cm-page-title">{{ rencontre.team.nom }} vs {{ rencontre.opponent }}</h1>
+            <p class="cm-page-subtitle">Fiche de rencontre</p>
+        </div>
+        <div class="d-flex gap-2">
+            <a href="{{ path('app_rencontre_index') }}" class="btn btn-outline-light">Retour</a>
+            <a href="{{ path('app_rencontre_edit', {'id': rencontre.id}) }}" class="btn btn-primary">Modifier</a>
+        </div>
+    </div>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ rencontre.id }}</td>
-            </tr>
-            <tr>
-                <th>Opponent</th>
-                <td>{{ rencontre.opponent }}</td>
-            </tr>
-            <tr>
-                <th>Date</th>
-                <td>{{ rencontre.date ? rencontre.date|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Score_team</th>
-                <td>{{ rencontre.scoreTeam }}</td>
-            </tr>
-            <tr>
-                <th>Score_opponent</th>
-                <td>{{ rencontre.scoreOpponent }}</td>
-            </tr>
-            <tr>
-                <th>Analyse</th>
-                <td>{{ rencontre.analyse }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="row g-3 mb-3">
+        <div class="col-md-4">
+            <div class="cm-stat">
+                <p class="cm-soft mb-1">Date</p>
+                <p class="h5 mb-0">{{ rencontre.date ? rencontre.date|date('d/m/Y H:i') : '-' }}</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="cm-stat">
+                <p class="cm-soft mb-1">Score</p>
+                <p class="h3 mb-0">
+                    {% if rencontre.scoreTeam is not null and rencontre.scoreOpponent is not null %}
+                        {{ rencontre.scoreTeam }} - {{ rencontre.scoreOpponent }}
+                    {% else %}
+                        A jouer
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="cm-stat">
+                <p class="cm-soft mb-1">Reference</p>
+                <p class="h5 mb-0">Match #{{ rencontre.id }}</p>
+            </div>
+        </div>
+    </div>
 
-    <a href="{{ path('app_rencontre_index') }}">back to list</a>
-
-    <a href="{{ path('app_rencontre_edit', {'id': rencontre.id}) }}">edit</a>
-
-    {{ include('rencontre/_delete_form.html.twig') }}
+    <div class="cm-card p-4">
+        <h2 class="h5">Analyse</h2>
+        <p class="mb-0">{{ rencontre.analyse ?: 'Aucune analyse enregistree.' }}</p>
+        <div class="mt-4 pt-3 border-top border-secondary-subtle">
+            {{ include('rencontre/_delete_form.html.twig') }}
+        </div>
+    </div>
 {% endblock %}
