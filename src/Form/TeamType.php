@@ -12,8 +12,13 @@ class TeamType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom')
-            ->add('type')
+            ->add('nom', null, [
+                'label' => 'Nom de l equipe',
+            ])
+            ->add('type', null, [
+                'label' => 'Type',
+                'help' => 'Ex: U17, Senior, Feminin, Reserve',
+            ])
         ;
     }
 

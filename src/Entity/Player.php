@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\PlayerRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: PlayerRepository::class)]
 class Player
@@ -15,15 +16,26 @@ class Player
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Le nom est obligatoire.')]
+    #[Assert\Length(max: 255)]
     private ?string $nom = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Le prenom est obligatoire.')]
+    #[Assert\Length(max: 255)]
     private ?string $prenom = null;
 
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
+    #[Assert\NotNull(message: 'La date de naissance est obligatoire.')]
+    #[Assert\LessThan('today', message: 'La date de naissance doit etre dans le passe.')]
     private ?\DateTimeImmutable $date_naissance = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Le sexe est obligatoire.')]
+    #[Assert\Choice(
+        choices: ['Homme', 'Femme', 'Autre'],
+        message: 'Choisis une valeur valide pour le sexe.'
+    )]
     private ?string $sexe = null;
 
     #[ORM\ManyToOne(inversedBy: 'players')]

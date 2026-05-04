@@ -3,9 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\RencontreRepository;
-use BcMath\Number;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: RencontreRepository::class)]
 class Rencontre
@@ -16,15 +16,20 @@ class Rencontre
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Le nom de l adversaire est obligatoire.')]
+    #[Assert\Length(max: 255)]
     private ?string $opponent = null;
 
     #[ORM\Column]
+    #[Assert\NotNull(message: 'La date du match est obligatoire.')]
     private ?\DateTimeImmutable $date = null;
 
     #[ORM\Column(nullable: true)]
+    #[Assert\PositiveOrZero(message: 'Le score ne peut pas etre negatif.')]
     private ?int $score_team = null;
 
     #[ORM\Column(nullable: true)]
+    #[Assert\PositiveOrZero(message: 'Le score ne peut pas etre negatif.')]
     private ?int $score_opponent = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
@@ -63,24 +68,24 @@ class Rencontre
         return $this;
     }
 
-    public function getScoreTeam(): ?Number
+    public function getScoreTeam(): ?int
     {
         return $this->score_team;
     }
 
-    public function setScoreTeam(?Number $score_team): static
+    public function setScoreTeam(?int $score_team): static
     {
         $this->score_team = $score_team;
 
         return $this;
     }
 
-    public function getScoreOpponent(): ?Number
+    public function getScoreOpponent(): ?int
     {
         return $this->score_opponent;
     }
 
-    public function setScoreOpponent(?Number $score_opponent): static
+    public function setScoreOpponent(?int $score_opponent): static
     {
         $this->score_opponent = $score_opponent;
 
