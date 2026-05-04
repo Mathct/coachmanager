@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rencontre index{% endblock %}
+
+{% block body %}
+    <h1>Rencontre index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Opponent</th>
+                <th>Date</th>
+                <th>Score_team</th>
+                <th>Score_opponent</th>
+                <th>Analyse</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rencontre in rencontres %}
+            <tr>
+                <td>{{ rencontre.id }}</td>
+                <td>{{ rencontre.opponent }}</td>
+                <td>{{ rencontre.date ? rencontre.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ rencontre.scoreTeam }}</td>
+                <td>{{ rencontre.scoreOpponent }}</td>
+                <td>{{ rencontre.analyse }}</td>
+                <td>
+                    <a href="{{ path('app_rencontre_show', {'id': rencontre.id}) }}">show</a>
+                    <a href="{{ path('app_rencontre_edit', {'id': rencontre.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_rencontre_new') }}">Create new</a>
+{% endblock %}
