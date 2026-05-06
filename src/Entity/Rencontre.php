@@ -39,6 +39,9 @@ class Rencontre
     #[ORM\JoinColumn(nullable: false)]
     private ?Team $team = null;
 
+    #[ORM\OneToOne(mappedBy: 'rencontre', cascade: ['persist', 'remove'])]
+    private ?Composition $composition = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -112,6 +115,26 @@ class Rencontre
     public function setTeam(?Team $team): static
     {
         $this->team = $team;
+
+        return $this;
+    }
+
+    public function getComposition(): ?Composition
+    {
+        return $this->composition;
+    }
+
+    public function setComposition(?Composition $composition): static
+    {
+        if ($composition === null && $this->composition !== null) {
+            $this->composition->setRencontre(null);
+        }
+
+        if ($composition !== null && $composition->getRencontre() !== $this) {
+            $composition->setRencontre($this);
+        }
+
+        $this->composition = $composition;
 
         return $this;
     }

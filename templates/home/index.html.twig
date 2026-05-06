@@ -52,6 +52,7 @@
                         <th>Adversaire</th>
                         <th>Date</th>
                         <th>Score</th>
+                        <th class="text-end"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -67,10 +68,13 @@
                                 <span class="badge text-bg-secondary">A jouer</span>
                             {% endif %}
                         </td>
+                        <td class="text-end">
+                            <a class="btn btn-sm btn-outline-light" href="{{ path('app_rencontre_show', {'id': rencontre.id}) }}">Voir</a>
+                        </td>
                     </tr>
                 {% else %}
                     <tr>
-                        <td colspan="4" class="text-center text-muted py-4">Aucune rencontre pour le moment.</td>
+                        <td colspan="5" class="text-center text-muted py-4">Aucune rencontre pour le moment.</td>
                     </tr>
                 {% endfor %}
                 </tbody>

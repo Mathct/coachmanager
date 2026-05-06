@@ -124,6 +124,185 @@
                 .text-muted {
                     color: var(--cm-muted) !important;
                 }
+
+                .cm-pitch {
+                    position: relative;
+                    width: 100%;
+                    min-height: 520px;
+                    border-radius: 16px;
+                    border: 2px solid #8cd08f;
+                    background: linear-gradient(180deg, #1f7b42 0%, #19663a 100%);
+                    overflow: hidden;
+                }
+
+                .cm-pitch-sm {
+                    min-height: 360px;
+                }
+
+                .cm-pitch::before {
+                    content: '';
+                    position: absolute;
+                    inset: 0;
+                    background: repeating-linear-gradient(
+                        180deg,
+                        rgba(255, 255, 255, 0.06) 0px,
+                        rgba(255, 255, 255, 0.06) 36px,
+                        rgba(255, 255, 255, 0) 36px,
+                        rgba(255, 255, 255, 0) 72px
+                    );
+                }
+
+                .cm-pitch-center-line {
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    top: 0;
+                    border-top: 2px solid rgba(255, 255, 255, 0.75);
+                    z-index: 1;
+                }
+
+                .cm-pitch-center-circle {
+                    position: absolute;
+                    width: 140px;
+                    height: 70px;
+                    border: 2px solid rgba(255, 255, 255, 0.75);
+                    border-top: none;
+                    border-radius: 0 0 70px 70px;
+                    left: calc(50% - 70px);
+                    top: 0;
+                    z-index: 1;
+                }
+
+                .cm-pitch-box {
+                    position: absolute;
+                    width: 55%;
+                    left: 22.5%;
+                    height: 120px;
+                    border: 2px solid rgba(255, 255, 255, 0.75);
+                    z-index: 1;
+                }
+
+                .cm-pitch-box-top {
+                    display: none;
+                }
+
+                .cm-pitch-box-bottom {
+                    bottom: 0;
+                    border-bottom: none;
+                }
+
+                .cm-pitch-board {
+                    position: absolute;
+                    inset: 0;
+                    z-index: 2;
+                }
+
+                .cm-slot-layer,
+                .cm-player-layer {
+                    position: absolute;
+                    inset: 0;
+                }
+
+                .cm-slot-layer {
+                    z-index: 1;
+                }
+
+                .cm-player-layer {
+                    z-index: 2;
+                }
+
+                .cm-slot-marker {
+                    position: absolute;
+                    transform: translate(-50%, -50%);
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 0.2rem;
+                }
+
+                .cm-slot-marker-dot {
+                    width: 14px;
+                    height: 14px;
+                    border-radius: 50%;
+                    border: 2px dashed rgba(214, 239, 222, 0.95);
+                    background: rgba(11, 39, 19, 0.38);
+                    box-shadow: 0 0 0 3px rgba(224, 247, 230, 0.18);
+                }
+
+                .cm-slot-marker-label {
+                    color: #e4ffe8;
+                    font-size: 0.62rem;
+                    letter-spacing: 0.03em;
+                    font-weight: 700;
+                    background: rgba(0, 0, 0, 0.35);
+                    border-radius: 6px;
+                    padding: 0.05rem 0.3rem;
+                }
+
+                .cm-player-chip {
+                    position: absolute;
+                    transform: translate(-50%, -50%);
+                    background: #0c1633;
+                    border: 1px solid #5a79c4;
+                    border-radius: 10px;
+                    min-width: 86px;
+                    padding: 0.35rem 0.45rem;
+                    text-align: center;
+                    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+                    cursor: grab;
+                }
+
+                .cm-player-chip:active {
+                    cursor: grabbing;
+                }
+
+                .cm-player-chip-readonly {
+                    cursor: default;
+                }
+
+                .cm-player-chip-number {
+                    display: inline-block;
+                    min-width: 22px;
+                    border-radius: 12px;
+                    background: var(--cm-primary);
+                    color: #04111d;
+                    font-weight: 800;
+                    font-size: 0.8rem;
+                    line-height: 1.3;
+                    margin-bottom: 0.15rem;
+                    padding: 0 0.35rem;
+                }
+
+                .cm-player-chip-name {
+                    display: block;
+                    font-size: 0.75rem;
+                    font-weight: 600;
+                    line-height: 1.2;
+                    max-width: 90px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    margin: 0 auto;
+                }
+
+                .cm-player-chip-pos {
+                    display: block;
+                    font-size: 0.7rem;
+                    color: #b8caf5;
+                    line-height: 1.2;
+                }
+
+                .cm-row-titulaire > td {
+                    background-color: rgba(185, 255, 214, 0.42) !important;
+                }
+
+                .cm-row-remplacant > td {
+                    background-color: rgba(255, 228, 170, 0.44) !important;
+                }
+
+                .cm-row-absent > td {
+                    background-color: rgba(255, 210, 222, 0.44) !important;
+                }
             </style>
         {% endblock %}
 
