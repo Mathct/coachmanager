@@ -34,9 +34,6 @@ class Composition
     #[ORM\Column]
     private bool $isValidated = false;
 
-    /**
-     * @var Collection<int, CompositionPlayer>
-     */
     #[ORM\OneToMany(targetEntity: CompositionPlayer::class, mappedBy: 'composition', orphanRemoval: true, cascade: ['persist'])]
     private Collection $compositionPlayers;
 
@@ -86,9 +83,6 @@ class Composition
         return $this;
     }
 
-    /**
-     * @return Collection<int, CompositionPlayer>
-     */
     public function getCompositionPlayers(): Collection
     {
         return $this->compositionPlayers;

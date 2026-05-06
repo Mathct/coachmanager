@@ -26,15 +26,9 @@ class Team
     #[Assert\Length(max: 255)]
     private ?string $type = null;
 
-    /**
-     * @var Collection<int, Player>
-     */
     #[ORM\OneToMany(targetEntity: Player::class, mappedBy: 'team')]
     private Collection $players;
 
-    /**
-     * @var Collection<int, Rencontre>
-     */
     #[ORM\OneToMany(targetEntity: Rencontre::class, mappedBy: 'team', orphanRemoval: true)]
     private Collection $rencontres;
 
@@ -78,9 +72,6 @@ class Team
         return $this;
     }
 
-    /**
-     * @return Collection<int, Player>
-     */
     public function getPlayers(): Collection
     {
         return $this->players;
@@ -99,7 +90,6 @@ class Team
     public function removePlayer(Player $player): static
     {
         if ($this->players->removeElement($player)) {
-            // set the owning side to null (unless already changed)
             if ($player->getTeam() === $this) {
                 $player->setTeam(null);
             }
@@ -108,9 +98,6 @@ class Team
         return $this;
     }
 
-    /**
-     * @return Collection<int, Rencontre>
-     */
     public function getRencontres(): Collection
     {
         return $this->rencontres;
@@ -129,7 +116,6 @@ class Team
     public function removeRencontre(Rencontre $rencontre): static
     {
         if ($this->rencontres->removeElement($rencontre)) {
-            // set the owning side to null (unless already changed)
             if ($rencontre->getTeam() === $this) {
                 $rencontre->setTeam(null);
             }

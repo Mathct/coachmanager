@@ -157,12 +157,6 @@ final class RencontreController extends AbstractController
         ]);
     }
 
-    /**
-     * @param array<string, mixed> $submittedEntries
-     * @param array<int, Player> $players
-     * @param array<int, CompositionPlayer> $entriesByPlayerId
-     * @return array{0:int,1:bool,2:?int}
-     */
     private function applyCompositionEntries(array $submittedEntries, array $players, array $entriesByPlayerId): array
     {
         $usedNumbers = [];
