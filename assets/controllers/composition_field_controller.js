@@ -150,7 +150,6 @@ export default class extends Controller {
                     >
                         <span class="cm-player-chip-number">${starter.number}</span>
                         <span class="cm-player-chip-name">${starter.name}</span>
-                        <span class="cm-player-chip-pos">${starter.position}</span>
                     </div>
                 `;
             })

@@ -16,18 +16,16 @@
             <table class="table table-dark table-hover align-middle cm-table mb-0">
                 <thead>
                     <tr>
-                        <th>#</th>
                         <th>Joueur</th>
                         <th>Date de naissance</th>
                         <th>Sexe</th>
                         <th>Equipe</th>
-                        <th class="text-end">Actions</th>
+                        <th class="text-end"></th>
                     </tr>
                 </thead>
                 <tbody>
                 {% for player in players %}
                     <tr>
-                        <td>{{ player.id }}</td>
                         <td class="fw-semibold">{{ player.nom }} {{ player.prenom }}</td>
                         <td>{{ player.dateNaissance ? player.dateNaissance|date('d/m/Y') : '-' }}</td>
                         <td><span class="badge text-bg-secondary">{{ player.sexe }}</span></td>
@@ -39,7 +37,7 @@
                     </tr>
                 {% else %}
                     <tr>
-                        <td colspan="6" class="text-center text-muted py-4">Aucun joueur enregistre.</td>
+                        <td colspan="5" class="text-center text-muted py-4">Aucun joueur enregistre.</td>
                     </tr>
                 {% endfor %}
                 </tbody>

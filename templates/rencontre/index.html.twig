@@ -16,18 +16,16 @@
             <table class="table table-dark table-hover align-middle cm-table mb-0">
                 <thead>
                     <tr>
-                        <th>#</th>
                         <th>Equipe</th>
                         <th>Adversaire</th>
                         <th>Date</th>
                         <th>Score</th>
-                        <th class="text-end">Actions</th>
+                        <th class="text-end"></th>
                     </tr>
                 </thead>
                 <tbody>
                 {% for rencontre in rencontres %}
                     <tr>
-                        <td>{{ rencontre.id }}</td>
                         <td>{{ rencontre.team.nom }}</td>
                         <td class="fw-semibold">{{ rencontre.opponent }}</td>
                         <td>{{ rencontre.date ? rencontre.date|date('d/m/Y H:i') : '-' }}</td>
@@ -45,7 +43,7 @@
                     </tr>
                 {% else %}
                     <tr>
-                        <td colspan="6" class="text-center text-muted py-4">Aucune rencontre enregistree.</td>
+                        <td colspan="5" class="text-center text-muted py-4">Aucune rencontre enregistree.</td>
                     </tr>
                 {% endfor %}
                 </tbody>

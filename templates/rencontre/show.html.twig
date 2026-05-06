@@ -17,13 +17,13 @@
 
     <div class="row g-3 mb-3">
         <div class="col-md-4">
-            <div class="cm-stat">
+            <div class="cm-stat h-100 text-center">
                 <p class="cm-soft mb-1">Date</p>
                 <p class="h5 mb-0">{{ rencontre.date ? rencontre.date|date('d/m/Y H:i') : '-' }}</p>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="cm-stat">
+            <div class="cm-stat h-100 text-center">
                 <p class="cm-soft mb-1">Score</p>
                 <p class="h3 mb-0">
                     {% if rencontre.scoreTeam is not null and rencontre.scoreOpponent is not null %}
@@ -32,12 +32,6 @@
                         A jouer
                     {% endif %}
                 </p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="cm-stat">
-                <p class="cm-soft mb-1">Reference</p>
-                <p class="h5 mb-0">Match #{{ rencontre.id }}</p>
             </div>
         </div>
     </div>
@@ -83,7 +77,7 @@
                     <div
                         data-composition-field-target="row"
                         data-player-id="{{ entry.player.id }}"
-                        data-player-name="{{ entry.player.prenom }} {{ entry.player.nom }}"
+                        data-player-name="{{ entry.player.nom }}"
                         hidden
                     >
                         <input data-role="status" value="{{ entry.status }}">
