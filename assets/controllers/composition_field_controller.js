@@ -98,17 +98,27 @@ export default class extends Controller {
         this.rowTargets.forEach((row) => {
             const status = row.querySelector('[data-role="status"]')?.value;
             const isPlaced = row.querySelector('[data-role="placed"]')?.value === '1';
+            const position = row.querySelector('[data-role="position"]')?.value || '';
+            const canManagePlacement = status === 'titulaire' && position !== '';
             this.updatePositionChoices(row, allowedRoles);
             row.classList.toggle('cm-row-titulaire', status === 'titulaire');
             row.classList.toggle('cm-row-remplacant', status === 'remplacant');
             row.classList.toggle('cm-row-absent', status === 'absent');
+            const placeButton = row.querySelector('[data-role="place-btn"]');
+            const removeButton = row.querySelector('[data-role="remove-btn"]');
+            if (placeButton) {
+                placeButton.disabled = !canManagePlacement;
+            }
+            if (removeButton) {
+                removeButton.disabled = !canManagePlacement;
+            }
 
             if (isPlaced) {
                 starters.push({
                     playerId: row.dataset.playerId || '',
                     number: row.querySelector('[data-role="number"]')?.value || '-',
                     name: row.dataset.playerName || '',
-                    position: row.querySelector('[data-role="position"]')?.value || '?',
+                    position: position || '?',
                     coordX: row.querySelector('[data-role="coord-x"]')?.value || '',
                     coordY: row.querySelector('[data-role="coord-y"]')?.value || '',
                 });

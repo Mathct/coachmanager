@@ -120,20 +120,97 @@
 
                 .form-control,
                 .form-select {
-                    background-color: #0f1934;
-                    border-color: #334c8d;
+                    background-color: rgba(15, 25, 52, 0.72);
+                    border-color: #3c548f;
                     color: #eef4ff;
                 }
 
                 .form-control:focus,
                 .form-select:focus {
-                    background-color: #0f1934;
+                    background-color: rgba(15, 25, 52, 0.82);
                     color: #eef4ff;
+                    border-color: #5b79bf;
+                    box-shadow: 0 0 0 0.2rem rgba(91, 121, 191, 0.18);
                 }
 
                 .form-label {
                     color: #c5d5f7;
                     font-weight: 600;
+                    margin-bottom: 0.45rem;
+                }
+
+                .mb-3 > .form-label + .form-control,
+                .mb-3 > .form-label + .form-select {
+                    margin-top: 0.2rem;
+                }
+
+                .form-control::placeholder {
+                    color: #9fb1dc;
+                }
+
+                .cm-team-form .form-label {
+                    margin-bottom: 0.55rem;
+                }
+
+                .cm-team-form .cm-input {
+                    background-color: rgba(19, 32, 66, 0.86) !important;
+                    border-color: #4a66a8 !important;
+                    color: #eef4ff !important;
+                    padding-top: 0.62rem;
+                    padding-bottom: 0.62rem;
+                }
+
+                .cm-team-form .cm-input:focus {
+                    background-color: rgba(19, 32, 66, 0.95) !important;
+                    border-color: #6f93e6 !important;
+                    box-shadow: 0 0 0 0.2rem rgba(92, 129, 214, 0.2) !important;
+                }
+
+                .cm-player-form .form-label {
+                    margin-bottom: 0.55rem;
+                }
+
+                .cm-player-form .cm-input {
+                    background-color: rgba(19, 32, 66, 0.86) !important;
+                    border-color: #4a66a8 !important;
+                    color: #eef4ff !important;
+                    padding-top: 0.62rem;
+                    padding-bottom: 0.62rem;
+                }
+
+                .cm-player-form .cm-input:focus {
+                    background-color: rgba(19, 32, 66, 0.95) !important;
+                    border-color: #6f93e6 !important;
+                    box-shadow: 0 0 0 0.2rem rgba(92, 129, 214, 0.2) !important;
+                }
+
+                .cm-rencontre-form .form-label {
+                    margin-bottom: 0.55rem;
+                }
+
+                .cm-rencontre-form .cm-input {
+                    background-color: rgba(19, 32, 66, 0.86) !important;
+                    border-color: #4a66a8 !important;
+                    color: #eef4ff !important;
+                    padding-top: 0.62rem;
+                    padding-bottom: 0.62rem;
+                }
+
+                .cm-rencontre-form .cm-input:focus {
+                    background-color: rgba(19, 32, 66, 0.95) !important;
+                    border-color: #6f93e6 !important;
+                    box-shadow: 0 0 0 0.2rem rgba(92, 129, 214, 0.2) !important;
+                }
+
+                .form-control:-webkit-autofill,
+                .form-control:-webkit-autofill:hover,
+                .form-control:-webkit-autofill:focus,
+                .form-select:-webkit-autofill,
+                .form-select:-webkit-autofill:hover,
+                .form-select:-webkit-autofill:focus {
+                    -webkit-text-fill-color: #eef4ff;
+                    -webkit-box-shadow: 0 0 0 1000px rgba(15, 25, 52, 0.82) inset;
+                    transition: background-color 5000s ease-in-out 0s;
                 }
 
                 .text-muted {

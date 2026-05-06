@@ -55,9 +55,9 @@
                             <thead>
                                 <tr>
                                     <th>Joueur</th>
-                                    <th>Statut</th>
-                                    <th>Poste</th>
-                                    <th>N°</th>
+                                    <th style="width: 190px;">Statut</th>
+                                    <th style="width: 140px;">Poste</th>
+                                    <th style="width: 90px;">N°</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -102,7 +102,7 @@
                                                 {% endfor %}
                                             </select>
                                         </td>
-                                        <td style="width: 120px;">
+                                        <td style="width: 90px;">
                                             <input
                                                 type="number"
                                                 min="1"
@@ -119,8 +119,8 @@
                                             <input type="hidden" value="" data-role="slot-index">
                                         </td>
                                         <td class="text-nowrap">
-                                            <button type="button" class="btn btn-sm btn-primary" data-action="click->composition-field#placePlayer">Placer</button>
-                                            <button type="button" class="btn btn-sm btn-danger" data-action="click->composition-field#removePlayer">Retirer</button>
+                                            <button type="button" class="btn btn-sm btn-primary" data-role="place-btn" data-action="click->composition-field#placePlayer">Placer</button>
+                                            <button type="button" class="btn btn-sm btn-danger" data-role="remove-btn" data-action="click->composition-field#removePlayer">Retirer</button>
                                         </td>
                                     </tr>
                                 {% endfor %}

@@ -1,22 +1,46 @@
 {{ form_start(form) }}
-    <div class="row g-3">
+    <div class="row g-3 cm-rencontre-form">
         <div class="col-md-6">
-            {{ form_row(form.team) }}
+            <div class="mb-3">
+                {{ form_label(form.team) }}
+                {{ form_widget(form.team, {'attr': {'class': 'form-control cm-input'}}) }}
+                {{ form_errors(form.team) }}
+            </div>
         </div>
         <div class="col-md-6">
-            {{ form_row(form.opponent) }}
+            <div class="mb-3">
+                {{ form_label(form.opponent) }}
+                {{ form_widget(form.opponent, {'attr': {'class': 'form-control cm-input'}}) }}
+                {{ form_errors(form.opponent) }}
+            </div>
         </div>
         <div class="col-md-6">
-            {{ form_row(form.date) }}
+            <div class="mb-3">
+                {{ form_label(form.date) }}
+                {{ form_widget(form.date, {'attr': {'class': 'form-control cm-input'}}) }}
+                {{ form_errors(form.date) }}
+            </div>
         </div>
         <div class="col-md-3">
-            {{ form_row(form.score_team) }}
+            <div class="mb-3">
+                {{ form_label(form.score_team) }}
+                {{ form_widget(form.score_team, {'attr': {'class': 'form-control cm-input'}}) }}
+                {{ form_errors(form.score_team) }}
+            </div>
         </div>
         <div class="col-md-3">
-            {{ form_row(form.score_opponent) }}
+            <div class="mb-3">
+                {{ form_label(form.score_opponent) }}
+                {{ form_widget(form.score_opponent, {'attr': {'class': 'form-control cm-input'}}) }}
+                {{ form_errors(form.score_opponent) }}
+            </div>
         </div>
         <div class="col-12">
-            {{ form_row(form.analyse) }}
+            <div class="mb-3">
+                {{ form_label(form.analyse) }}
+                {{ form_widget(form.analyse, {'attr': {'class': 'form-control cm-input'}}) }}
+                {{ form_errors(form.analyse) }}
+            </div>
         </div>
     </div>
     <div class="d-flex gap-2 mt-3">
