@@ -39,6 +39,7 @@ class PlayerType extends AbstractType
                 'class' => Team::class,
                 'choice_label' => 'nom',
                 'placeholder' => 'Choisir une equipe',
+                'required' => false,
             ])
         ;
     }
